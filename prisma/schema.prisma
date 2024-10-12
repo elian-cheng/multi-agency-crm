@@ -42,7 +42,7 @@ model Permissions {
 model Agency {
   id               String                @id @default(uuid())
   connectAccountId String?               @default("")
-  customerId       String                @default("")
+  customerId       String                @default("") // stripe customer id
   name             String
   agencyLogo       String                @db.Text
   companyEmail     String                @db.Text
@@ -375,7 +375,7 @@ model Subscription {
   active    Boolean  @default(false)
 
   priceId              String // stripe price id
-  customerId           String
+  customerId           String // stripe customer id
   currentPeriodEndDate DateTime
   subscritiptionId     String   @unique
 
