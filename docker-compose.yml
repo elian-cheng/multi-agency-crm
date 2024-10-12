@@ -4,10 +4,10 @@ services:
   db:
     image: mysql
     restart: always
-    container_name: crm-db
+    container_name: syntro-db
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=crm-db
+      - MYSQL_DATABASE=syntro
       - MYSQL_PASSWORD=secret
     ports:
       - "3306:3306"
