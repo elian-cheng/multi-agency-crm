@@ -438,7 +438,7 @@ const AgencyDetails = ({ data }: Props) => {
               </AlertDialogTrigger>
             </div>
           )}
-          <AlertDialogContent>
+          <AlertDialogContent aria-describedby="alert dialog to confirm deletion of the agency">
             <AlertDialogHeader>
               <AlertDialogTitle className="text-left">Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription className="text-left">
