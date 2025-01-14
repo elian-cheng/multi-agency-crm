@@ -92,7 +92,7 @@ const AgencyDetails = ({ data }: Props) => {
   const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
       let newUserData;
-      let custId;
+      let customerId;
       if (!data?.id) {
         const bodyData = {
           email: values.companyEmail,
@@ -124,15 +124,15 @@ const AgencyDetails = ({ data }: Props) => {
           body: JSON.stringify(bodyData)
         });
         const customerData: { customerId: string } = await customerResponse.json();
-        custId = customerData.customerId;
+        customerId = customerData.customerId;
       }
 
       newUserData = await initUser({ role: "AGENCY_OWNER" });
-      if (!data?.customerId && !custId) return;
+      if (!data?.customerId && !customerId) return;
 
       const response = await upsertAgency({
         id: data?.id ? data.id : v4(),
-        customerId: data?.customerId || custId || "",
+        customerId: data?.customerId || customerId || "",
         address: values.address,
         agencyLogo: values.agencyLogo,
         city: values.city,
@@ -159,7 +159,7 @@ const AgencyDetails = ({ data }: Props) => {
       console.log(error);
       toast({
         variant: "destructive",
-        title: "Oppse!",
+        title: "Oops!",
         description: "could not create your agency"
       });
     }
@@ -359,10 +359,10 @@ const AgencyDetails = ({ data }: Props) => {
                   name="zipCode"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <FormLabel>Zipcpde</FormLabel>
+                      <FormLabel>Zip code</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Zipcode"
+                          placeholder="Zip code"
                           {...field}
                         />
                       </FormControl>

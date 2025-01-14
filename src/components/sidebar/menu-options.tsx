@@ -68,7 +68,7 @@ const MenuOptions = ({
       {...openState}>
       <SheetTrigger
         asChild
-        className="absolute left-4 top-4 z-[100] md:!hidden flex">
+        className="absolute left-4 top-4 z-[49] md:!hidden flex">
         <Button
           variant="outline"
           size={"icon"}>
@@ -126,7 +126,7 @@ const MenuOptions = ({
                   {(user?.role === "AGENCY_OWNER" || user?.role === "AGENCY_ADMIN") &&
                     user?.Agency && (
                       <CommandGroup heading="Agency">
-                        <CommandItem className="!bg-transparent my-2 text-primary broder-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
+                        <CommandItem className="!bg-transparent my-2 text-primary border-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
                           {defaultOpen ? (
                             <Link
                               href={`/agency/${user?.Agency?.id}`}
@@ -223,26 +223,26 @@ const MenuOptions = ({
                   </CommandGroup>
                 </CommandList>
                 {(user?.role === "AGENCY_OWNER" || user?.role === "AGENCY_ADMIN") && (
-                  // <SheetClose>
-                  <Button
-                    className="w-full flex gap-2"
-                    onClick={() => {
-                      setOpen(
-                        <CustomModal
-                          title="Create A Subaccount"
-                          subheading="You can switch between your agency account and the subaccount from the sidebar">
-                          <SubAccountDetails
-                            agencyDetails={user?.Agency as Agency}
-                            userId={user?.id as string}
-                            userName={user?.name}
-                          />
-                        </CustomModal>
-                      );
-                    }}>
-                    <PlusCircleIcon size={15} />
-                    Create Sub Account
-                  </Button>
-                  // </SheetClose>
+                  <SheetClose>
+                    <Button
+                      className="w-full flex gap-2"
+                      onClick={() => {
+                        setOpen(
+                          <CustomModal
+                            title="Create A Subaccount"
+                            subheading="You can switch between your agency account and the subaccount from the sidebar">
+                            <SubAccountDetails
+                              agencyDetails={user?.Agency as Agency}
+                              userId={user?.id as string}
+                              userName={user?.name}
+                            />
+                          </CustomModal>
+                        );
+                      }}>
+                      <PlusCircleIcon size={15} />
+                      Create Sub Account
+                    </Button>
+                  </SheetClose>
                 )}
               </Command>
             </PopoverContent>

@@ -14,7 +14,7 @@ const Navigation = ({ user }: Props) => {
     <div className="fixed top-0 right-0 left-0 p-4 flex items-center justify-between z-10 bg-muted dark:bg-gray-900">
       <aside className="flex items-center gap-2">
         <Image
-          src={"./assets/logo.svg"}
+          src={"/assets/logo.png"}
           width={40}
           height={40}
           alt="logo"

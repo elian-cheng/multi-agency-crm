@@ -307,7 +307,7 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
       role: "AGENCY_OWNER"
     }
   });
-  if (!agencyOwner) return console.log("🔴Erorr could not create subaccount");
+  if (!agencyOwner) return console.log("🔴Error - could not create subaccount");
   const permissionId = v4();
   const response = await db.subAccount.upsert({
     where: { id: subAccount.id },
@@ -375,4 +375,50 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
     }
   });
   return response;
+};
+
+export const getUserPermissions = async (userId: string) => {
+  const response = await db.user.findUnique({
+    where: { id: userId },
+    select: { Permissions: { include: { SubAccount: true } } }
+  });
+
+  return response;
+};
+
+export const updateUser = async (user: Partial<User>) => {
+  const response = await db.user.update({
+    where: { email: user.email },
+    data: { ...user }
+  });
+
+  await clerkClient.users.updateUserMetadata(response.id, {
+    privateMetadata: {
+      role: user.role || "SUBACCOUNT_USER"
+    }
+  });
+
+  return response;
+};
+
+export const changeUserPermissions = async (
+  permissionId: string | undefined,
+  userEmail: string,
+  subAccountId: string,
+  permission: boolean
+) => {
+  try {
+    const response = await db.permissions.upsert({
+      where: { id: permissionId },
+      update: { access: permission },
+      create: {
+        access: permission,
+        email: userEmail,
+        subAccountId: subAccountId
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("🔴Could not change persmission", error);
+  }
 };

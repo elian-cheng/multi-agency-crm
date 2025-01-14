@@ -107,7 +107,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Oppse!",
+        title: "Oops!",
         description: "Could not save sub account details."
       });
     }
@@ -175,7 +175,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="companyEmail"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Acount Email</FormLabel>
+                    <FormLabel>Account Email</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Email"
@@ -194,7 +194,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="companyPhone"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Acount Phone Number</FormLabel>
+                    <FormLabel>Account Phone Number</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Phone"
@@ -269,11 +269,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="zipCode"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Zipcpde</FormLabel>
+                    <FormLabel>Zip code</FormLabel>
                     <FormControl>
                       <Input
                         required
-                        placeholder="Zipcode"
+                        placeholder="Zip code"
                         {...field}
                       />
                     </FormControl>

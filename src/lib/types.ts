@@ -1,5 +1,5 @@
 import { Contact, Lane, Notification, Prisma, Role, Tag, Ticket, User } from "@prisma/client";
-import { _getTicketsWithAllRelations, getAuthUserDetails } from "./queries";
+import { _getTicketsWithAllRelations, getAuthUserDetails, getUserPermissions } from "./queries";
 import { db } from "./db";
 import { z } from "zod";
 
@@ -23,3 +23,9 @@ export type NotificationWithUser =
 export type PricesList = Stripe.ApiList<Stripe.Price>;
 
 export type TicketDetails = Prisma.PromiseReturnType<typeof _getTicketsWithAllRelations>;
+
+export type AuthUserWithAgencySidebarOptionsSubAccounts = Prisma.PromiseReturnType<
+  typeof getAuthUserDetails
+>;
+
+export type UserWithPermissionsAndSubAccounts = Prisma.PromiseReturnType<typeof getUserPermissions>;
