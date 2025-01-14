@@ -40,7 +40,7 @@ const formSchema = z.object({
 });
 
 interface SubAccountDetailsProps {
-  //To add the sub account to the agency
+  //To add the subaccount to the agency
   agencyDetails: Agency;
   details?: Partial<SubAccount>;
   userId: string;
@@ -93,7 +93,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
       if (!response) throw new Error("No response from server");
       await saveActivityLogsNotification({
         agencyId: response.agencyId,
-        description: `${userName} | updated sub account | ${response.name}`,
+        description: `${userName} | updated subaccount | ${response.name}`,
         subaccountId: response.id
       });
 
@@ -108,7 +108,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
       toast({
         variant: "destructive",
         title: "Oops!",
-        description: "Could not save sub account details."
+        description: "Could not save subaccount details."
       });
     }
   }
@@ -124,7 +124,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Sub Account Information</CardTitle>
+        <CardTitle>Subaccount Information</CardTitle>
         <CardDescription>Please enter business details</CardDescription>
       </CardHeader>
       <CardContent>

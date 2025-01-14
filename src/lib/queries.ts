@@ -250,7 +250,7 @@ export const upsertAgency = async (agency: Agency, price?: Plan) => {
               link: `/agency/${agency.id}/settings`
             },
             {
-              name: "Sub Accounts",
+              name: "Subaccounts",
               icon: "person",
               link: `/agency/${agency.id}/all-subaccounts`
             },
@@ -421,4 +421,34 @@ export const changeUserPermissions = async (
   } catch (error) {
     console.log("🔴Could not change persmission", error);
   }
+};
+
+export const getSubaccountDetails = async (subaccountId: string) => {
+  const response = await db.subAccount.findUnique({
+    where: {
+      id: subaccountId
+    }
+  });
+  return response;
+};
+
+export const deleteSubAccount = async (subaccountId: string) => {
+  const response = await db.subAccount.delete({
+    where: {
+      id: subaccountId
+    }
+  });
+  return response;
+};
+
+export const getPipelines = async (subaccountId: string) => {
+  const response = await db.pipeline.findMany({
+    where: { subAccountId: subaccountId },
+    include: {
+      Lane: {
+        include: { Tickets: true }
+      }
+    }
+  });
+  return response;
 };

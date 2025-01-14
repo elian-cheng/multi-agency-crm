@@ -285,8 +285,8 @@ const AgencyDetails = ({ data }: Props) => {
                       <div>
                         <FormLabel>Whitelabel Agency</FormLabel>
                         <FormDescription>
-                          Turning on whilelabel mode will show your agency logo to all sub accounts
-                          by default. You can overwrite this functionality through sub account
+                          Turning on whilelabel mode will show your agency logo to all subaccounts
+                          by default. You can overwrite this functionality through subaccount
                           settings.
                         </FormDescription>
                       </div>
@@ -402,14 +402,14 @@ const AgencyDetails = ({ data }: Props) => {
                       await updateAgencyDetails(data.id, { goal: val });
                       await saveActivityLogsNotification({
                         agencyId: data.id,
-                        description: `Updated the agency goal to | ${val} Sub Account`,
+                        description: `Updated the agency goal to | ${val} Subaccount`,
                         subaccountId: undefined
                       });
                       router.refresh();
                     }}
                     min={1}
                     className="bg-background !border !border-input"
-                    placeholder="Sub Account Goal"
+                    placeholder="Subaccount Goal"
                   />
                 </div>
               )}
@@ -427,8 +427,8 @@ const AgencyDetails = ({ data }: Props) => {
                 <div>Danger Zone</div>
               </div>
               <div className="text-muted-foreground">
-                Deleting your agency can not be undone. This will also delete all sub accounts and
-                all data related to your sub accounts. Sub accounts will no longer have access to
+                Deleting your agency can not be undone. This will also delete all subaccounts and
+                all data related to your subaccounts. Subaccounts will no longer have access to
                 funnels, contacts etc.
               </div>
               <AlertDialogTrigger
@@ -443,7 +443,7 @@ const AgencyDetails = ({ data }: Props) => {
               <AlertDialogTitle className="text-left">Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription className="text-left">
                 This action cannot be undone. This will permanently delete the Agency account and
-                all related sub accounts.
+                all related subaccounts.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex items-center">
