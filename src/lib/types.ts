@@ -1,5 +1,10 @@
 import { Contact, Lane, Notification, Prisma, Role, Tag, Ticket, User } from "@prisma/client";
-import { _getTicketsWithAllRelations, getAuthUserDetails, getUserPermissions } from "./queries";
+import {
+  _getTicketsWithAllRelations,
+  getAuthUserDetails,
+  getUserPermissions,
+  getMedia
+} from "./queries";
 import { db } from "./db";
 import { z } from "zod";
 
@@ -43,3 +48,7 @@ const __getUsersWithAgencySubAccountPermissionsSidebarOptions = async (agencyId:
 export type UsersWithAgencySubAccountPermissionsSidebarOptions = Prisma.PromiseReturnType<
   typeof __getUsersWithAgencySubAccountPermissionsSidebarOptions
 >;
+
+export type GetMediaFiles = Prisma.PromiseReturnType<typeof getMedia>;
+
+export type CreateMediaType = Prisma.MediaCreateWithoutSubaccountInput;

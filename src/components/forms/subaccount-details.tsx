@@ -161,7 +161,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                     <FormControl>
                       <Input
                         required
-                        placeholder="Your agency name"
+                        placeholder="Your account name"
                         {...field}
                       />
                     </FormControl>
