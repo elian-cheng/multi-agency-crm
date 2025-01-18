@@ -36,7 +36,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { CheckIcon, ChevronsUpDownIcon, User2 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "../ui/command";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "../ui/command";
 import { cn } from "@/lib/utils";
 import Loading from "../global/loading";
 import TagCreator from "../global/tag-creator";
@@ -258,43 +265,45 @@ const TicketForm = ({ getNewTicket, laneId, subaccountId }: Props) => {
               </PopoverTrigger>
               <PopoverContent className="w-[400px] p-0">
                 <Command>
-                  <CommandInput
-                    placeholder="Search..."
-                    className="h-9"
-                    value={search}
-                    onChangeCapture={async value => {
-                      //@ts-ignore
-                      setSearch(value.target.value);
-                      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-                      saveTimerRef.current = setTimeout(async () => {
-                        const response = await searchContacts(
-                          //@ts-ignore
-                          value.target.value
-                        );
-                        setContactList(response);
-                        setSearch("");
-                      }, 1000);
-                    }}
-                  />
-                  <CommandEmpty>No Customer found.</CommandEmpty>
-                  <CommandGroup>
-                    {contactList.map(c => (
-                      <CommandItem
-                        key={c.id}
-                        value={c.id}
-                        onSelect={currentValue => {
-                          setContact(currentValue === contact ? "" : currentValue);
-                        }}>
-                        {c.name}
-                        <CheckIcon
-                          className={cn(
-                            "ml-auto h-4 w-4",
-                            contact === c.id ? "opacity-100" : "opacity-0"
-                          )}
-                        />
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
+                  <CommandList>
+                    <CommandInput
+                      placeholder="Search..."
+                      className="h-9"
+                      value={search}
+                      onChangeCapture={async value => {
+                        //@ts-ignore
+                        setSearch(value.target.value);
+                        if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+                        saveTimerRef.current = setTimeout(async () => {
+                          const response = await searchContacts(
+                            //@ts-ignore
+                            value.target.value
+                          );
+                          setContactList(response);
+                          setSearch("");
+                        }, 1000);
+                      }}
+                    />
+                    <CommandEmpty>No Customer found.</CommandEmpty>
+                    <CommandGroup>
+                      {contactList.map(c => (
+                        <CommandItem
+                          key={c.id}
+                          value={c.id}
+                          onSelect={currentValue => {
+                            setContact(currentValue === contact ? "" : currentValue);
+                          }}>
+                          {c.name}
+                          <CheckIcon
+                            className={cn(
+                              "ml-auto h-4 w-4",
+                              contact === c.id ? "opacity-100" : "opacity-0"
+                            )}
+                          />
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
                 </Command>
               </PopoverContent>
             </Popover>
