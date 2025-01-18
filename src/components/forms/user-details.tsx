@@ -6,7 +6,7 @@ import {
 import { useModal } from "@/providers/modal-provider";
 import { SubAccount, User } from "@prisma/client";
 import React, { useEffect, useState } from "react";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import {
   changeUserPermissions,
@@ -159,9 +159,9 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
     if (!id) return;
     if (userData || data?.user) {
       const updatedUser = await updateUser(values);
-      authUserData?.Agency?.SubAccount.filter(subacc =>
-        authUserData.Permissions.find(p => p.subAccountId === subacc.id && p.access)
-      ).forEach(async subaccount => {
+      authUserData?.Agency?.SubAccount?.filter(subacc =>
+        authUserData?.Permissions?.find(p => p.subAccountId === subacc.id && p.access)
+      )?.forEach(async subaccount => {
         await saveActivityLogsNotification({
           agencyId: undefined,
           description: `Updated ${userData?.name} information`,

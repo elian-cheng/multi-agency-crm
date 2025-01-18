@@ -21,7 +21,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 
 import FileUpload from "../global/file-upload";
 import { Agency, SubAccount } from "@prisma/client";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { saveActivityLogsNotification, upsertSubAccount } from "@/lib/queries";
 import { useEffect } from "react";
 import Loading from "../global/loading";

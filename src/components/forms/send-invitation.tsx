@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Button } from "../ui/button";
 import Loading from "../global/loading";
 import { saveActivityLogsNotification, sendInvitation } from "@/lib/queries";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 interface SendInvitationProps {
   agencyId: string;
