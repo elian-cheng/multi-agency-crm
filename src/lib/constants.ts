@@ -30,7 +30,7 @@ import Warning from "@/components/icons/warning";
 export const pricingCards = [
   {
     title: "Starter",
-    description: "Perfect for trying out syntro",
+    description: "Perfect for trying out Syntro",
     price: "Free",
     duration: "",
     highlight: "Key features",
@@ -38,26 +38,26 @@ export const pricingCards = [
     priceId: ""
   },
   {
-    title: "Unlimited Saas",
+    title: "Unlimited SAAS",
     description: "The ultimate agency kit",
-    price: "$199",
+    price: "$79",
     duration: "month",
     highlight: "Key features",
     features: ["Rebilling", "24/7 Support team"],
-    priceId: "price_1OYxkqFj9oKEERu1KfJGWxgN"
+    priceId: "price_1QluIgG34C1Ik0UUTV6jjBUZ"
   },
   {
-    title: "Basic",
+    title: "Business",
     description: "For serious agency owners",
-    price: "$49",
+    price: "$39",
     duration: "month",
     highlight: "Everything in Starter, plus",
     features: ["Unlimited Subaccounts", "Unlimited Team members"],
-    priceId: "price_1OYxkqFj9oKEERu1NbKUxXxN"
+    priceId: "price_1QluIgG34C1Ik0UUqXOHhvzo"
   }
 ];
 
-export const addOnProducts = [{ title: "Priority Support", id: "prod_PNjJAE2EpP16pn" }];
+export const addOnProducts = [{ title: "Priority Support", id: "prod_RfF12XqQ0pesB0" }];
 
 export const icons = [
   {

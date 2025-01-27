@@ -377,7 +377,7 @@ model Subscription {
   priceId              String // stripe price id
   customerId           String // stripe customer id
   currentPeriodEndDate DateTime
-  subscritiptionId     String   @unique
+  subscriptionId     String   @unique
 
   agencyId String? @unique
   Agency   Agency? @relation(fields: [agencyId], references: [id])
@@ -408,8 +408,8 @@ enum Role {
 }
 
 enum Plan {
-  price_1Q951pG34C1Ik0UUSSlDeqxj
-  price_1Q953YG34C1Ik0UUEytVls5e
+  price_1QluIgG34C1Ik0UUqXOHhvzo
+  price_1QluIgG34C1Ik0UUTV6jjBUZ
 }
 
 enum InvitationStatus {

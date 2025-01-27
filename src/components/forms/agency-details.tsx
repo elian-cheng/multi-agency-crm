@@ -41,7 +41,7 @@ import {
 } from "@/lib/queries";
 import { Button } from "../ui/button";
 import FileUpload from "../global/file-upload";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import Loading from "../global/loading";
 
 type Props = {
