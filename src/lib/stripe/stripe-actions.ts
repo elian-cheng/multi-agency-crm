@@ -57,3 +57,11 @@ export const getConnectAccountProducts = async (stripeAccount: string) => {
   );
   return products.data;
 };
+
+export const getConnectedAccounts = async () => {
+  const accounts = await stripe.accounts.list({
+    limit: 3
+  });
+
+  return accounts.data;
+};

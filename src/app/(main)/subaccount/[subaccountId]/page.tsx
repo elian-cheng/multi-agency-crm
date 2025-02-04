@@ -90,7 +90,8 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
       .reduce((total, session) => total + (session.amount_total || 0), 0)
       .toFixed(2);
 
-    closingRate = +((totalClosedSessions.length / checkoutSessions.data.length) * 100).toFixed(2);
+    closingRate =
+      +((totalClosedSessions.length / checkoutSessions.data.length) * 100).toFixed(2) || 0;
   }
 
   const funnels = await db.funnel.findMany({

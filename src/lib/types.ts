@@ -5,7 +5,8 @@ import {
   getUserPermissions,
   getMedia,
   getPipelineDetails,
-  getTicketsWithTags
+  getTicketsWithTags,
+  getFunnels
 } from "./queries";
 import { db } from "./db";
 import { z } from "zod";
@@ -122,3 +123,10 @@ export type StripeCustomerType = {
   shipping: ShippingInfo;
   address: Address;
 };
+
+export const FunnelPageSchema = z.object({
+  name: z.string().min(1),
+  pathName: z.string().optional()
+});
+
+export type FunnelsForSubAccount = Prisma.PromiseReturnType<typeof getFunnels>[0];
