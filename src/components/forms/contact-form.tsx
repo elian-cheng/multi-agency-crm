@@ -26,8 +26,6 @@ const ContactForm = ({ apiCall, subTitle, title }: Props) => {
   });
   const isLoading = form.formState.isLoading;
 
-  //CHALLENGE: We want to create tags for each leads that comes from the form
-
   return (
     <Card className="max-w-[500px] w-[500px]">
       <CardHeader>

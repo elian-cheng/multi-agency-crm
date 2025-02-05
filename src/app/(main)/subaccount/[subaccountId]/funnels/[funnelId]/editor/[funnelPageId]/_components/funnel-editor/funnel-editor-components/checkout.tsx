@@ -48,8 +48,8 @@ const Checkout = (props: Props) => {
   }, [funnelId]);
 
   useEffect(() => {
-    if (livePrices.length && subaccountId && subAccountConnectAccId) {
-      const getClientSercet = async () => {
+    if (!!livePrices?.length && subaccountId && subAccountConnectAccId) {
+      const getClientSecret = async () => {
         try {
           const body = JSON.stringify({
             subAccountConnectAccId,
@@ -74,17 +74,18 @@ const Checkout = (props: Props) => {
             setClientSecret(responseJson.clientSecret);
           }
         } catch (error) {
+          console.log(error);
           toast({
             open: true,
             className: "z-[100000]",
             variant: "destructive",
-            title: "Oppse!",
+            title: "Oops!",
             //@ts-ignore
             description: error.message
           });
         }
       };
-      getClientSercet();
+      getClientSecret();
     }
   }, [livePrices, subaccountId, subAccountConnectAccId]);
 
