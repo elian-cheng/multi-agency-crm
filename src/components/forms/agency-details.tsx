@@ -91,7 +91,6 @@ const AgencyDetails = ({ data }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
-      let newUserData;
       let customerId;
       if (!data?.id) {
         const bodyData = {
@@ -127,7 +126,7 @@ const AgencyDetails = ({ data }: Props) => {
         customerId = customerData.customerId;
       }
 
-      newUserData = await initUser({ role: "AGENCY_OWNER" });
+      const newUserData = await initUser({ role: "AGENCY_OWNER" });
       if (!data?.customerId && !customerId) return;
 
       const response = await upsertAgency({

@@ -77,7 +77,7 @@ const PipelineView = ({
       }
 
       case "ticket": {
-        let newLanes = [...allLanes];
+        const newLanes = [...allLanes];
         const originLane = newLanes.find(lane => lane.id === source.droppableId);
         const destinationLane = newLanes.find(lane => lane.id === destination.droppableId);
 
