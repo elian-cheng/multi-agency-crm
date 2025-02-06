@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "docker:db": "docker-compose -f docker-compose.yml up -d",
-    "docker:db:stop": "docker-compose -f docker-compose.yml down"
+    "docker:db:stop": "docker-compose -f docker-compose.yml down",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
