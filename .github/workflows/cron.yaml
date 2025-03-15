@@ -1,0 +1,11 @@
+name: Cron
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  keep-awake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send request to keep the app awake
+        run: curl -X GET https://eliancheng.vercel.app/api/health
